@@ -9,8 +9,11 @@ Also allows you to track the most important metrics, campaign activity, and paid
 
 ## Table of contents
 * [Architecture](#architecture)
-* [Real-time stream processing pipeline](#real-time-stream-processing-pipeline)
-* [Implementaion](#implementaion)
+* [Event Streaming Analytics Platform components
+](#event-streaming-analytics-platform-components)
+* [Event Streaming Analytics pipeline
+](#event-streaming-analytics-pipeline)
+* [Refrences](#refrences)
 * [Acknowledgments](#acknowledgments)
 
 ## Architecture
