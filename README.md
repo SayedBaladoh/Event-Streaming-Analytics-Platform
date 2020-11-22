@@ -1,16 +1,10 @@
 # Event Streaming Analytics Platform
 
-The objective of the platform is to build 
-
 A real-time data analytics platform that tracks the actions and behavior of your visitors. It enables immediate exploration, analyzing, processing, and visualization of event / behavioral data that meets the needs of your business today and in the future.
 
  It provides an understanding of the customer journey on on the site or apps and the different factors that contributed to a conversion which helps you improve visitor alerts that send you a notification when an important visitor returns to the website.
 
 Also allows you to track the most important metrics, campaign activity, and paid traffic analytics that helps you improve and optimize your paid advertising campaigns against this objective. 
-
-
-Insights gleaned from Analytics can help businesses make informed decisions, measure performance and track/monitor operations.  If implemented and consumed correctly it can serve as a trustworthy compass guiding you to the direction of the true north.
-
 
 
 ## Table of contents
