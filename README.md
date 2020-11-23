@@ -1,42 +1,43 @@
 # Event Streaming Analytics Platform
 
-A real-time data analytics platform that tracks the actions and behavior of your visitors. It enables immediate exploration, analyzing, processing, and visualization of event / behavioral data that meets the needs of your business today and in the future.
+A real-time event analytics platform that tracks the behavior and actions of your visitors. 
 
- It provides an understanding of the customer journey on on the site or apps and the different factors that contributed to a conversion which helps you improve visitor alerts that send you a notification when an important visitor returns to the website.
+It enables immediate exploration, analyzing, processing, and visualization of behavioral / event data, so you can maximize the value of behavioral data that meets the needs of your business today and in the future.
 
-Also allows you to track the most important metrics, campaign activity, and paid traffic analytics that helps you improve and optimize your paid advertising campaigns against this objective. 
+It provides an understanding of the customer journey on the site or apps, which helps you improve visitor alerts that send you a notification when an important visitor returns to the website or mobile app.
+
+Also allows you to track the most important metrics, campaign activity, and paid traffic analytics that helps you improve and optimize your paid advertising campaigns against the objective. 
 
 
 ## Table of contents
 * [Architecture](#architecture)
-* [Event Streaming Analytics Platform components
-](#event-streaming-analytics-platform-components)
-* [Event Streaming Analytics pipeline
-](#event-streaming-analytics-pipeline)
-* [Refrences](#refrences)
+* [Event Streaming Analytics Platform Components](#event-streaming-analytics-platform-components)
+* [Event Streaming Analytics Pipeline](#event-streaming-analytics-pipeline)
+* [References](#references)
 * [Acknowledgments](#acknowledgments)
 
 ## Architecture
-- Structural Architecture: 
+### Structural Architecture: 
 The basic architecture behind the functionality of the proposed Platform structurally is broken down into a set of components as in the following diagram.
 
 ![Structural architecture of proposed event streaming analytics platform](architecture-components.png "Structural Architecture")
 
-The structural architecture of the proposed event streaming analytics platform pipeline
+The structural architecture of the proposed event streaming analytics platform.
 
-- Event Streaming Analytics Pipeline: The next diagram shows the high-level architecture of the proposed event streaming analytics platform pipeline.
+### Pipeline Architecture: 
+The next diagram shows the pipeline of the proposed event streaming analytics platform.
 
 ![Overall architecture of proposed event streaming analytics pipeline](architecture-pipeline.png "Pipeline Architecture")
 
-The overall architecture of the proposed event streaming analytics pipeline
+The overall pipeline architecture of the proposed event streaming analytics.
 
 ## Event Streaming Analytics Platform components
-The event streaming analytics pipeline is pluggable and we can add a new component or remove one.
+The event streaming analytics pipeline is pluggable and you can add a new component or remove one. The system and the storage backend can scale horizontally
 
 The platform as in the structural architecture comprises the following main components:
 
 ### Configuration
-The settings that customize the events being fired and the data you want to collect. Also, determine the event pipeline and set up rules for processing it.
+The settings that customize the events being fired and the data you want to collect. Set up the events pipeline with rules for processing events.
 
 The configuration has the following sub-components:
 
@@ -53,7 +54,7 @@ Tag Manager has three main processes:
 
 - `Google Analytics` is a powerful analytics system that provides `Google Tag Manager` to implement all tracking tags with ease and efficiency. 
 
-Google Analytics may give you free access to their services but in turn, they’re assembling data profiles on your website visitors, which they can then use for better targeting of advertisements across their network. If you want to keep control of your data, you need a tool that you can control. You won’t get that from Google Analytics. You can review these docs about [Why You Should Consider Using Google Analytics Alternatives](https://kinsta.com/blog/google-analytics-alternatives/#why).
+    Google Analytics may give you free access to their services but in turn, they’re assembling data profiles on your website visitors, which they can then use for better targeting of advertisements across their network. If you want to keep control of your data, you need a tool that you can control. You won’t get that from Google Analytics. You can review these docs about [Why You Should Consider Using Google Analytics Alternatives](https://kinsta.com/blog/google-analytics-alternatives/#why).
 
 - There are many `Open Source` alternatives to Google Analytics, we can use one of them and we can customize it for our business needs.
   * [Top 5 open source alternatives to Google Analytics](https://opensource.com/article/18/1/top-5-open-source-analytics-tools).
@@ -61,42 +62,45 @@ Google Analytics may give you free access to their services but in turn, they’
   * [Plausible: Open source Google Analytics alternative](https://plausible.io/open-source-website-analytics).
 
 #### Event Processors Flow Designer
-Used to orchestrate the steps to process the fired events. 
+- Used to orchestrate the steps flow to process the fired events. 
 
-Modeling the event driven processes pipeline which includes rules to determine the required event processors or microservices for processing events.
+- Modeling the event driven process pipeline which includes rules to determine the required event processors or microservices for processing events.
 
 #### Metadata
-Setting up the metadata required for all platform components.
+Define all required metadata for platform components.
 
 
 ### Analytics.JS and Mobile SDK
-The analytics.js library is a JavaScript library for measuring website traffic and analyzing visitor's behavior and Mobile SDK is used for mobile apps.
-It parses and fires analytics tags, and collects user event data (page views, Visits/Sessions, e-commerce transactions, site content, etc) from the client-side tier of your websites and mobile apps, and send data to collector service.
+Mobile SDK and JavaScript library for measuring websites and mobile apps traffic and analyzing visitor's behavior.
+
+It parses and fires analytic tags, and gathers user interaction data (page views, Visits/Sessions, e-commerce transactions, site content, ..... etc) from the client-side tier of your websites and mobile apps, and sends collected data to the collector service.
 
 **Implementation**:
 - We can develop our analytics.js library and SDK for different mobile types.
-- There are a lot of open source libraries to do event tracking available on `Github`: [analytics-tracking](https://github.com/topics/analytics-tracking). 
+- There are a lot of open-source libraries to do event tracking available on `Github`: [analytics-tracking: https://github.com/topics/analytics-tracking](https://github.com/topics/analytics-tracking). 
 we can use one of them, without the need to fully develop it and we can customize it for our business needs.
 
 
 ### Collection
-Analytics library and tracking code on a website and mobile SDK send events to collector service which produces all incoming event data has to the event hub. 
-Then event router routes all events to the channel in the event hub based on configured event process flow.
+- Analytics library, tags, and tracking code on the client-side gather user interaction data and send it to collector service which produces all incoming event data has to the event hub. 
+- Then `event mediator/router` routes each specific processing event to an event channel, which is then received and processed by the event processor based on configured event process flow.
 
 
 ### Processing
-Includes `Event Processors` to process the collected events and apply the business logic, and `Stream Processing` for real-time stream processing.
+Includes:
+- `Event Processors` to process the collected events and apply the business logic.
+- `Stream Processing` for real-time stream processing.
 
 
 ### Indexing
-Consumes data from the event hub and stores it to required data storage based on the requirement and the target of the system.
+Consumes event data from the event hub and stores it to the required storage media based on the requirement and the target of the system.
 - If we need to provide ** Full-text search** we can index data into `Elasticsearch` or `Solar` as a storage backend and use `Kibana` or `Banana` for dashboards and visualization.
-- We can store the data to `NoSQL` databases or `HDFS`.
+- We can also store the data to `NoSQL` databases or `HDFS`.
 
 
 ### Reporting & Visualization 
-- Reporting provides access to all the processed event in the form of infographics through web interface, and also allows you to get the processed event through reporting API.
-- Selecting the data storage and Visualization based on the requirement and the target of the system.
+- Reporting provides access to all the processed events data in the form of infographics through a web interface and also allows you to get the processed event data through reporting API.
+- Selecting the data storage medium and visualization tool based on the requirement and the target of the system.
 
 
 ## Event Streaming Analytics pipeline
@@ -105,42 +109,41 @@ Consumes data from the event hub and stores it to required data storage based on
 
 - `Collector` service: push all the incoming events to a message broker `event hub` for ingestion.
 
-The event flow starts with a client
-sending an event to the collector, which is used to transport the event to the `event hub`.
+  The event flow starts with a client sending an event to the collector, which is used to transport the event to the `event hub`.
 
-- `Message broker`: A message broker is there to allow for the asynchronous processing of the data. One of the most popular message broker for data is `Apache Kafka`. 
+- `Message broker/event hub`: A message broker is there to allow for the asynchronous processing of the data. One of the most popular message brokers for data is `Apache Kafka`. 
 
-- The `event mediator / router` receives the initial event from `event hub` and orchestrates that event by sending additional asynchronous events to `event channels` to execute each step of the process on event processes flow. 
+- The `event mediator/router` is responsible for `orchestrating the steps` contained within the initial event recieved from the `event hub`. 
 
-It responsible for orchestrating the steps contained within the initial event. 
-For each step in the initial event, the event mediator sends out a specific processing event to an event channel, which is then received and processed by the event processor.
+  For each step in the initial event, the event mediator sends out additional asynchronous processing events to `event channels` to execute each step of the process on event processes flow by the `event processors/microservices`.
 
-The event mediator doesn’t actually perform the business logic necessary to process the initial event;rather, it knows of the steps required to process the initial event.
+  The event mediator doesn’t actually perform the business logic necessary to process the initial event; rather, it knows of the steps required to process the initial event.
 
-The mediator sends a message, get the reply and send other message based on the reply to the next Micro-Service.
+  The mediator sends a message, get the reply, and send another message based on the reply to the next processor/microservice.
 
-The mediator is responsible to control the flow by setting the next queue so the next Micro-Service can pick it up.
+  The mediator is responsible to control the flow by setting the next queue so the next processor/microservice can pick it up.
 
-- `Event processors / microservice` - The event processor components contain the application business logic necessary to process the processing event. 
+- `Event processors/microservices` 
+  The event processor components contain the application business logic necessary to process the processing event. 
 
-Event processors (microservice) are self-contained, independent,  highly decoupled architecture components that perform a specific task in the application or system.
+  Event processors/microservices are self-contained, independent, highly decoupled architecture components that perform a specific task in the application or system.
 
-`Event processors`, which listen on the `event channels`  in event hub, receive the event from the `event mediator`, execute specific business logic to process the event and replying back.
+  * `Event processors`, which listen on the `event channels`  in the event hub, receive the event from the `event mediator`, execute a specific business logic to process the event, and replying.
 
-- `Stream processing` can directly consume the data stream to compute real-time aggregates or filter the stream.
+  * `Stream processing` can directly consume the data stream to compute real-time aggregates or filter the stream.
 
 - `Indexer`: will take the incoming data from the `event hub` and push it to the storage layer.
 
-- `Storage Layer`: The storage layer provides a long term storage for the incoming event data.
+- `Storage Layer`: The storage layer provides long term storage for the incoming event data.
 
-- After aggregating and organizing data, `reporting views` are built from where the Analytics can be presented to the end user.
+- After aggregating and organizing data, `reporting views` are built from where the Analytics can be presented to the end-user.
 
-On the front-end users have the flexibility to query, filter, group, setup conversion goals and consume the data in a variety of formats.
+  On the front-end, users have the flexibility to query, filter, group, and consume the data in a variety of formats.
 
 
-## Refrences
+## References
 
-- [BUILDING AN EVENT-DRIVEN MESSAGING BROKER](https://www.irjet.net/archives/V7/i6/IRJET-V7I6733.pdf)
+- [Building an Event-Driven Messaging Brocker](https://www.irjet.net/archives/V7/i6/IRJET-V7I6733.pdf)
 - [Chapter 2. Event-Driven Architecture](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch02.html)
 - [Micro-Services and Mediator Pattern](https://www.linkedin.com/pulse/micro-services-mediator-pattern-eran-shaham/)
 - [Using Apache Kafka as a Scalable, Event-Driven Backbone for Service Architectures](https://www.confluent.io/blog/apache-kafka-for-service-architectures/)
@@ -159,7 +162,7 @@ On the front-end users have the flexibility to query, filter, group, setup conve
 - [13 Best Google Analytics Alternatives for Powerful Data Gathering](https://kinsta.com/blog/google-analytics-alternatives/)
 - [Plausible: Open source Google Analytics alternative](https://plausible.io/open-source-website-analytics)
 - [analytics-tracking](https://github.com/topics/analytics-tracking)
-- [SNOWPLOW: FULL SETUP WITH GOOGLE ANALYTICS TRACKING](https://www.simoahava.com/analytics/snowplow-full-setup-with-google-analytics-tracking/)
+- [SNOWPLOW: Full Setup with Google Analytics Tracking](https://www.simoahava.com/analytics/snowplow-full-setup-with-google-analytics-tracking/)
 - [Building a Streaming Analytics Stack with Apache Kafka and Druid](https://www.confluent.io/blog/building-a-streaming-analytics-stack-with-apache-kafka-and-druid/)
 
 ## Acknowledgments
