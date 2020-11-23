@@ -113,6 +113,8 @@ Consumes event data from the event hub and stores it to the required storage med
 
 - `Message broker/event hub`: A message broker is there to allow for the asynchronous processing of the data. One of the most popular message brokers for data is `Apache Kafka`. 
 
+  **Apache Kafka**: is a publish-subscribe message bus that is designed for the delivery of streams. The architecture of Kafka is modeled as a distributed commit log, and Kafka provides resource isolation between things that produce data and things that consume data. Kafka is often used as a central repository of streams, where events are stored in Kafka for an intermediate period of time before they are routed elsewhere in a data cluster for further processing and analysis.
+
 - The `event mediator/router` is responsible for `orchestrating the steps` contained within the initial event recieved from the `event hub`. 
 
   For each step in the initial event, the event mediator sends out additional asynchronous processing events to `event channels` to execute each step of the process on event processes flow by the `event processors/microservices`.
