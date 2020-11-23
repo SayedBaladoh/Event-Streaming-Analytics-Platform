@@ -34,12 +34,12 @@ The overall pipeline architecture of the proposed event streaming analytics.
 ## Event Streaming Analytics Platform components
 The event streaming analytics pipeline is pluggable and you can add a new component or remove one. The system and the storage backend can scale horizontally
 
-The platform as in the structural architecture comprises the following main components:
+**The platform as in the structural architecture comprises the following main components**:
 
 ### Configuration
 The settings that customize the events being fired and the data you want to collect. Set up the events pipeline with rules for processing events.
 
-The configuration has the following sub-components:
+**The configuration has the following sub-components**:
 
 #### Tag Manager
 Tag Manager allows users to manage analytics tags on websites and mobile apps quickly and easily. It allows users to add all tracking codes without involving too much development team. Instead of updating all tracks on the website, you can use the tag manager interface to decide which code you want to install on the website or mobile app. 
@@ -94,8 +94,8 @@ Includes:
 
 ### Indexing
 Consumes event data from the event hub and stores it to the required storage media based on the requirement and the target of the system.
-- If we need to provide ** Full-text search** we can index data into `Elasticsearch` or `Solar` as a storage backend and use `Kibana` or `Banana` for dashboards and visualization.
-- We can also store the data to `NoSQL` databases or `HDFS`.
+- If we need to provide **Full-text search** we can index data into `Elasticsearch` or `Solar` as a storage backend and use `Kibana` or `Banana` for dashboards and visualization.
+- We can also store the event data to `NoSQL` databases or `HDFS`.
 
 
 ### Reporting & Visualization 
